@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Minds Gallery | Sunshine Elementary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka:wght@500&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361EE;
+            --secondary: #3A0CA3;
+            --accent: #7209B7;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --highlight: #4CC9F0;
+            --success: #38B000;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            background-blend-mode: overlay;
+            background-color: rgba(67, 97, 238, 0.9);
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(58,12,163,0.8), rgba(67,97,238,0.9));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--highlight);
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-flow: row wrap;
+            padding: 0 10px;
+            gap: 20px;
+        }
+
+        .art-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            width: 300px;
+            flex-grow:1;
+        }
+
+        .art-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .art-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .art-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .art-info {
+            padding: 1.5rem;
+        }
+
+        .art-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .art-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .artist {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .artist-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 10px;
+            background-size: cover;
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            padding: 4rem 0;
+            background-color: #f5f7fa;
+        }
+
+        .drawing-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .canvas-wrapper {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 400px;
+            background: white;
+            cursor: crosshair;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.footer-content {
+   
+}
+
+.footer-logo {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 28px;
+}
+
+.caption{
+    font-size: 14px;
+    margin: 20px auto;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-links {
+    
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a p {
+    margin: 25px auto;
+}
+
+.devs{
+    font-size: 14px;
+    color: var(--highlight);
+    margin: 5px auto;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div style="text-align: center; font-family: 'Fredoka', sans-serif; color: #FF006E; font-size: 35px;">
+  🎨 Welcome to JPPS Drawing Board
+</div>
+<div style="text-align: center; font-size: 18px !important; color: #a1a194; font-family: 'Trebuchet MS', sans-serif;">
+  This space is built to store, share, and celebrate students’ beautiful artwork made during school hours.
+</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Our Young Artists' Gallery</h1>
+                <p>You've scanned the QR code from your drawing Notebook! Explore student artwork, get inspired, and create your own masterpiece.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Student Artwork</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="art-card">
+                    <div class="art-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                        <span class="art-badge">Grade 3</span>
+                    </div>
+                    <div class="art-info">
+                        <h3>Colorful Abstract</h3>
+                        <p>A vibrant exploration of shapes and colors</p>
+                        <div class="artist">
+                            <div class="artist-avatar" style="background-image: url('https://randomuser.me/api/portraits/children/1.jpg')"></div>
+                            <span>Emma S.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card">
+                    <div class="art-image" style="background-image: url('https://images.unsplash.com/photo-1579762714456-bc0afeeb7243?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                        <span class="art-badge">Grade 2</span>
+                    </div>
+                    <div class="art-info">
+                        <h3>Family Portrait</h3>
+                        <p>A heartwarming depiction of family</p>
+                        <div class="artist">
+                            <div class="artist-avatar" style="background-image: url('https://randomuser.me/api/portraits/children/12.jpg')"></div>
+                            <span>Liam P.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-card">
+                    <div class="art-image" style="background-image: url('https://images.unsplash.com/photo-1579762715121-4e0df4a6a8af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
+                        <span class="art-badge">Grade 4</span>
+                    </div>
+                    <div class="art-info">
+                        <h3>Space Adventure</h3>
+                        <p>Journey through the cosmos</p>
+                        <div class="artist">
+                            <div class="artist-avatar" style="background-image: url('https://randomuser.me/api/portraits/children/24.jpg')"></div>
+                            <span>Olivia M.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interactive-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Create Your Own Art</h2>
+            </div>
+            <div class="drawing-container">
+                <div class="canvas-wrapper">
+                    <canvas id="drawingCanvas"></canvas>
+                </div>
+                <div class="tools">
+                    <div class="color-btn" style="background: #4361EE;" data-color="#4361EE"></div>
+                    <div class="color-btn" style="background: #7209B7;" data-color="#7209B7"></div>
+                    <div class="color-btn" style="background: #F72585;" data-color="#F72585"></div>
+                    <div class="color-btn" style="background: #4CC9F0;" data-color="#4CC9F0"></div>
+                    <div class="color-btn" style="background: #38B000;" data-color="#38B000"></div>
+                    <div class="color-btn" style="background: #FF9E00;" data-color="#FF9E00"></div>
+                    <div class="color-btn" style="background: #000000;" data-color="#000000"></div>
+                </div>
+                <div class="tools">
+                    <button class="btn btn-primary" id="saveBtn">Save Drawing</button>
+                    <button class="btn btn-outline" id="clearBtn">Clear Canvas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">J.P-P.S Art Program</p>
+                <div class="caption">Celebrating creativity and imagination in our young artists</div>
+                <div class="footer-links">
+                    <a href="index.html" style="color:var(--success);"><p>Home</p></a>
+                    <a href="gallery.html"><p>Gallery</p></a>
+                    <a href="create.html"><p>Create</p></a>
+                    <a href="about.html"><p>About</p></a>
+                    <a href="contact.html"><p>Contact</p></a>
+                    <a href="resources.html" ><p>Resources</p></a>
+                </div>
+                <p class="copyright">© 2023 J.P-P.S Teaching Curriculum.All rights are reserved.</p>
+                <p class="devs">• Build and Designed by Mahi Devs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      let isDrawing = false;
+      let currentColor = '#4361EE';
+
+      function resizeCanvas() {
+        const ratio = window.devicePixelRatio || 1;
+        const container = canvas.parentElement;
+        const width = container.offsetWidth;
+        const height = 400;
+
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset scaling
+        ctx.scale(ratio, ratio);
+
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 5;
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      function getXY(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+
+        if (e.touches) {
+          return {
+            x: (e.touches[0].clientX - rect.left) * scaleX / window.devicePixelRatio,
+            y: (e.touches[0].clientY - rect.top) * scaleY / window.devicePixelRatio
+          };
+        } else {
+          return {
+            x: (e.clientX - rect.left) * scaleX / window.devicePixelRatio,
+            y: (e.clientY - rect.top) * scaleY / window.devicePixelRatio
+          };
+        }
+      }
+
+      function startDrawing(e) {
+        const { x, y } = getXY(e);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        isDrawing = true;
+        e.preventDefault();
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+        const { x, y } = getXY(e);
+        ctx.strokeStyle = currentColor;
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        e.preventDefault();
+      }
+
+      function stopDrawing(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        ctx.closePath();
+        e.preventDefault();
+      }
+
+      // Mouse Events
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+
+      // Touch Events
+      canvas.addEventListener('touchstart', startDrawing, { passive: false });
+      canvas.addEventListener('touchmove', draw, { passive: false });
+      canvas.addEventListener('touchend', stopDrawing, { passive: false });
+      canvas.addEventListener('touchcancel', stopDrawing, { passive: false });
+
+      // Color Buttons
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          currentColor = this.getAttribute('data-color');
+        });
+      });
+
+      // Clear Canvas
+      document.getElementById('clearBtn').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // Save Drawing
+      document.getElementById('saveBtn').addEventListener('click', function () {
+        const link = document.createElement('a');
+        link.download = 'my-drawing.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+    </script>
+</body>
+</html>

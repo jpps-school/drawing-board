@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Art | Sunshine Elementary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span>🎨</span>J.P-P.S Drawing<span>Board</span>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="create.html" class="active">Create</a>
+                    <a href="about.html">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="create-section">
+        <div class="container">
+            <h1 style="color:#3A0CA3;margin:auto;width:250px;text-align:center;">Create Your Artwork</h1>
+            <hr style="border:none;background:#40a1ff;width:80px;height:4px;border-radius:2px;margin:0px auto 18px auto;">
+            <div class="drawing-container">
+                <div class="canvas-wrapper">
+                    <canvas id="drawingCanvas"></canvas>
+                </div>
+                <div class="tools">
+                    <div class="color-btn" style="background: #4361EE;" data-color="#4361EE"></div>
+                    <div class="color-btn" style="background: #7209B7;" data-color="#7209B7"></div>
+                    <div class="color-btn" style="background: #F72585;" data-color="#F72585"></div>
+                    <div class="color-btn" style="background: #4CC9F0;" data-color="#4CC9F0"></div>
+                    <div class="color-btn" style="background: #38B000;" data-color="#38B000"></div>
+                    <div class="color-btn" style="background: #FF9E00;" data-color="#FF9E00"></div>
+                    <div class="color-btn" style="background: #000000;" data-color="#000000"></div>
+                </div>
+                <div class="tools">
+                    <button class="btn btn-primary" id="saveBtn">Save Drawing</button>
+                    <button class="btn btn-outline" id="clearBtn">Clear Canvas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">J.P-P.S Art Program</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="create.html" style="color:var(--success);">Create</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="resources.html">Resources</a>
+                </div>
+                <p class="copyright">© 2023 J.P-P.S Teaching Curriculum</p>
+                <p class="devs">• Build and Designed by Mahi Devs</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      let isDrawing = false;
+      let currentColor = '#4361EE';
+
+      function resizeCanvas() {
+        const ratio = window.devicePixelRatio || 1;
+        const container = canvas.parentElement;
+        const width = container.offsetWidth;
+        const height = 400;
+
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset scaling
+        ctx.scale(ratio, ratio);
+
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 5;
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      function getXY(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+
+        if (e.touches) {
+          return {
+            x: (e.touches[0].clientX - rect.left) * scaleX / window.devicePixelRatio,
+            y: (e.touches[0].clientY - rect.top) * scaleY / window.devicePixelRatio
+          };
+        } else {
+          return {
+            x: (e.clientX - rect.left) * scaleX / window.devicePixelRatio,
+            y: (e.clientY - rect.top) * scaleY / window.devicePixelRatio
+          };
+        }
+      }
+
+      function startDrawing(e) {
+        const { x, y } = getXY(e);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        isDrawing = true;
+        e.preventDefault();
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+        const { x, y } = getXY(e);
+        ctx.strokeStyle = currentColor;
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        e.preventDefault();
+      }
+
+      function stopDrawing(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        ctx.closePath();
+        e.preventDefault();
+      }
+
+      // Mouse Events
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+
+      // Touch Events
+      canvas.addEventListener('touchstart', startDrawing, { passive: false });
+      canvas.addEventListener('touchmove', draw, { passive: false });
+      canvas.addEventListener('touchend', stopDrawing, { passive: false });
+      canvas.addEventListener('touchcancel', stopDrawing, { passive: false });
+      canvas.addEventListener('click', startDrawing);
+
+      // Color Buttons
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          currentColor = this.getAttribute('data-color');
+        });
+      });
+
+      // Clear Canvas
+      document.getElementById('clearBtn').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // Save Drawing
+      document.getElementById('saveBtn').addEventListener('click', function () {
+        const link = document.createElement('a');
+        link.download = 'my-drawing.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+    </script>
+</body>
+</html>
