@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Art | J.P-P.S Teaching Curriculum</title>
+    <meta name="description" content="Welcome to the JPPS Drawing Board, a creative digital space made for students to draw, sketch, and express their imagination freely — anytime, anywhere!">
+  <meta name="keywords" content="JPPS, JPPS school, contact jpps drawing board, jpps drawing,jpps student drawing, jpps teaching curriculum">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="James Proneir">
+  <meta property="og:title" content="Create Art at J-P-P.S Drawing Board">
+  <meta property="og:description" content="Welcome to JPPS Drawing Board.This space is built to store, share, and celebrate students’ beautiful artwork made during school hours.">
+  <meta property="og:image" content="https://jpps-school.github.io/drawing-board/images/jpps_logo.jpg">
+  <meta property="og:url" content="https://jpps-school.github.io/drawing-board/create.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://jpps-school.github.io/drawing-board/images/jpps_logo.jpg" type="image/jpg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "J.P-P.S Teaching Curriculum",  
+      "url": "https://jpps-school.github.io/drawing-board/create.html",
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://jpps-school.github.io/drawing-board/search?q={create art at jpps drawing board}",
+          "query-input": "required name=create art at jpps drawing board"
+       }
+    }
+  </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span>🎨</span>J.P-P.S Drawing<span>Board</span>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="create.html" class="active">Create</a>
+                    <a href="about.html">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="create-section">
+        <div id="editor">
+    <div id="con"></div>
+    <div class="app-container">
+        <header class="header">
+            <h1>SketchPro</h1>
+            <button id="themeToggle" class="icon-btn" title="Toggle Theme">
+                <span class="material-icons">brightness_6</span>
+            </button>
+        </header>
+        <div class="main-content">
+            <div class="sidebar left-sidebar">
+                <div class="panel">
+                    <h2>Tools</h2>
+                    <div class="tool-buttons">
+                        <button id="brushTool" class="tool-btn active" title="Brush (B)">
+                            <span class="material-icons">brush</span>
+                        </button>
+                        <button id="eraserTool" class="tool-btn" title="Eraser (E)">
+                            <span class="material-icons">cleaning_services</span>
+                        </button>
+                        <button id="moveTool" class="tool-btn" title="Move (M)">
+                            <span class="material-icons">open_with</span>
+                        </button>
+                    </div>
+                    <div class="brush-settings">
+                        <label>Brush Type:</label>
+                        <select id="brushType">
+                            <option value="round">Round</option>
+                            <option value="square">Square</option>
+                            <option value="textured">Textured</option>
+                        </select>
+                        <label>Size:</label>
+                        <input type="range" id="brushSize" min="1" max="100" value="10">
+                        <span id="brushSizeValue">10</span>
+                        <label>Opacity:</label>
+                        <input type="range" id="brushOpacity" min="0" max="1" step="0.01" value="1">
+                        <span id="brushOpacityValue">100%</span>
+                        <label>Color:</label>
+                        <input type="color" id="colorPicker" value="#000000">
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="sketchCanvas"></canvas>
+            </div>
+            <div class="sidebar right-sidebar">
+                <div class="panel">
+                    <h2>Layers</h2>
+                    <button id="addLayerBtn" class="action-btn">Add Layer</button>
+                    <button id="deleteLayerBtn" class="action-btn">Delete Layer</button>
+                    <div id="layerList"></div>
+                </div>
+                <div class="panel">
+                    <h2>History</h2>
+                    <button id="undoBtn" class="action-btn">Undo</button>
+                    <button id="redoBtn" class="action-btn">Redo</button>
+                </div>
+                <div class="panel">
+                    <h2>Import/Export</h2>
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <button id="savePngBtn" class="action-btn">Save as PNG</button>
+                    <button id="saveJpegBtn" class="action-btn">Save as JPEG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+   
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">J.P-P.S Art Program</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="create.html" style="color:var(--success);">Create</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="resources.html">Resources</a>
+                </div>
+                <p class="copyright">© 2023 J.P-P.S Teaching Curriculum</p>
+                <p class="devs">• Build and Designed by Mahi Devs</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const canvas = document.getElementById('sketchCanvas');
+        const parentCont = canvas.parentElement;
+const ctx = canvas.getContext('2d');
+const colorPicker = document.getElementById('colorPicker');
+const brushSize = document.getElementById('brushSize');
+const brushSizeValue = document.getElementById('brushSizeValue');
+const brushOpacity = document.getElementById('brushOpacity');
+const brushOpacityValue = document.getElementById('brushOpacityValue');
+const brushType = document.getElementById('brushType');
+const brushTool = document.getElementById('brushTool');
+const eraserTool = document.getElementById('eraserTool');
+const moveTool = document.getElementById('moveTool');
+const undoBtn = document.getElementById('undoBtn');
+const redoBtn = document.getElementById('redoBtn');
+const addLayerBtn = document.getElementById('addLayerBtn');
+const deleteLayerBtn = document.getElementById('deleteLayerBtn');
+const savePngBtn = document.getElementById('savePngBtn');
+const saveJpegBtn = document.getElementById('saveJpegBtn');
+const imageUpload = document.getElementById('imageUpload');
+const layerList = document.getElementById('layerList');
+const themeToggle = document.getElementById('themeToggle');
+
+// Canvas setup
+canvas.width = parentCont.offsetWidth;
+canvas.height = parentCont.offsetHeight;
+
+// Drawing state
+let isDrawing = false;
+let isMoving = false;
+let currentTool = 'brush';
+let layers = [{ canvas: createLayerCanvas(), visible: true, opacity: 1, blendingMode: 'normal', transform: { x: 0, y: 0, scale: 1, rotation: 0 } }];
+let currentLayer = 0;
+let undoStack = [];
+let redoStack = [];
+let lastPoint = null;
+let pressure = 1; // Simulated pressure for mouse/touch
+
+// Create a new layer canvas
+function createLayerCanvas() {
+    const layerCanvas = document.createElement('canvas');
+    layerCanvas.width = canvas.width;
+    layerCanvas.height = canvas.height;
+    const layerCtx = layerCanvas.getContext('2d');
+    layerCtx.fillStyle = 'transparent';
+    layerCtx.fillRect(0, 0, canvas.width, canvas.height);
+    return layerCtx;
+}
+
+// Update layer panel
+function updateLayerPanel() {
+    layerList.innerHTML = '';
+    layers.forEach((layer, index) => {
+        const layerItem = document.createElement('div');
+        layerItem.className = 'layer-item';
+        layerItem.innerHTML = `
+            <input type="checkbox" ${layer.visible ? 'checked' : ''} onchange="toggleLayerVisibility(${index}, this.checked)">
+            <span>Layer ${index + 1}</span>
+            <select onchange="changeBlendingMode(${index}, this.value)">
+                <option value="normal" ${layer.blendingMode === 'normal' ? 'selected' : ''}>Normal</option>
+                <option value="multiply" ${layer.blendingMode === 'multiply' ? 'selected' : ''}>Multiply</option>
+                <option value="overlay" ${layer.blendingMode === 'overlay' ? 'selected' : ''}>Overlay</option>
+            </select>
+            <input type="range" min="0" max="1" step="0.01" value="${layer.opacity}" oninput="changeLayerOpacity(${index}, this.value)">
+            <button onclick="selectLayer(${index})">Select</button>
+        `;
+        layerList.appendChild(layerItem);
+    });
+    redrawCanvas();
+}
+
+function toggleLayerVisibility(index, visible) {
+    layers[index].visible = visible;
+    redrawCanvas();
+}
+
+function changeLayerOpacity(index, opacity) {
+    layers[index].opacity = opacity;
+    redrawCanvas();
+}
+
+function changeBlendingMode(index, mode) {
+    layers[index].blendingMode = mode;
+    redrawCanvas();
+}
+
+function selectLayer(index) {
+    currentLayer = index;
+    updateLayerPanel();
+}
+
+// Redraw all visible layers with transformations and blending
+function redrawCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    layers.forEach(layer => {
+        if (layer.visible) {
+            ctx.save();
+            ctx.globalAlpha = layer.opacity;
+            ctx.globalCompositeOperation = layer.blendingMode;
+            ctx.translate(layer.transform.x + canvas.width / 2, layer.transform.y + canvas.height / 2);
+            ctx.rotate(layer.transform.rotation * Math.PI / 180);
+            ctx.scale(layer.transform.scale, layer.transform.scale);
+            ctx.translate(-canvas.width / 2, -canvas.height / 2);
+            ctx.drawImage(layer.canvas.canvas, 0, 0);
+            ctx.restore();
+        }
+    });
+}
+
+// Save current state for undo
+function saveState() {
+    const state = document.createElement('canvas');
+    state.width = canvas.width;
+    state.height = canvas.height;
+    state.getContext('2d').drawImage(layers[currentLayer].canvas.canvas, 0, 0);
+    undoStack.push({ layer: currentLayer, data: state });
+    if (undoStack.length > 20) undoStack.shift();
+    redoStack = [];
+}
+
+// Drawing functions
+function startDrawing(e) {
+    if (currentTool === 'move') {
+        isMoving = true;
+        lastPoint = getMousePos(e);
+        return;
+    }
+    isDrawing = true;
+    const pos = getMousePos(e);
+    layers[currentLayer].canvas.beginPath();
+    layers[currentLayer].canvas.moveTo(pos.x, pos.y);
+    draw(e);
+}
+
+function stopDrawing() {
+    if (isDrawing) {
+        isDrawing = false;
+        layers[currentLayer].canvas.closePath();
+        saveState();
+        redrawCanvas();
+    }
+    if (isMoving) {
+        isMoving = false;
+        saveState();
+    }
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+    const pos = getMousePos(e);
+    const currentPressure = simulatePressure(e);
+    layers[currentLayer].canvas.lineWidth = brushSize.value * currentPressure;
+    layers[currentLayer].canvas.lineCap = brushType.value === 'square' ? 'square' : 'round';
+    layers[currentLayer].canvas.globalAlpha = brushOpacity.value;
+    layers[currentLayer].canvas.strokeStyle = currentTool === 'eraser' ? 'white' : colorPicker.value;
+    if (brushType.value === 'textured') {
+        layers[currentLayer].canvas.lineJoin = 'miter';
+        layers[currentLayer].canvas.setLineDash([5, 10]);
+    } else {
+        layers[currentLayer].canvas.setLineDash([]);
+    }
+    layers[currentLayer].canvas.lineTo(pos.x, pos.y);
+    layers[currentLayer].canvas.stroke();
+    redrawCanvas();
+}
+
+function moveLayer(e) {
+    if (!isMoving) return;
+    const pos = getMousePos(e);
+    layers[currentLayer].transform.x += pos.x - lastPoint.x;
+    layers[currentLayer].transform.y += pos.y - lastPoint.y;
+    lastPoint = pos;
+    redrawCanvas();
+}
+
+function simulatePressure(e) {
+    // Simulate pressure based on mouse/touch velocity
+    if (!lastPoint) return 1;
+    const pos = getMousePos(e);
+    const dx = pos.x - lastPoint.x;
+    const dy = pos.y - lastPoint.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    lastPoint = pos;
+    return Math.min(1, Math.max(0.5, 1 - distance / 50));
+}
+
+function getMousePos(e) {
+    const rect = canvas.getBoundingClientRect();
+    let x, y;
+    if (e.touches) {
+        x = e.touches[0].clientX - rect.left;
+        y = e.touches[0].clientY - rect.top;
+    } else {
+        x = e.clientX - rect.left;
+        y = e.clientY - rect.top;
+    }
+    return { x, y };
+}
+
+// Event listeners
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', (e) => {
+    if (currentTool === 'move') moveLayer(e);
+    else draw(e);
+});
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+canvas.addEventListener('touchstart', startDrawing);
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    if (currentTool === 'move') moveLayer(e);
+    else draw(e);
+});
+canvas.addEventListener('touchend', stopDrawing);
+
+brushTool.addEventListener('click', () => {
+    currentTool = 'brush';
+    brushTool.classList.add('active');
+    eraserTool.classList.remove('active');
+    moveTool.classList.remove('active');
+});
+
+eraserTool.addEventListener('click', () => {
+    currentTool = 'eraser';
+    eraserTool.classList.add('active');
+    brushTool.classList.remove('active');
+    moveTool.classList.remove('active');
+});
+
+moveTool.addEventListener('click', () => {
+    currentTool = 'move';
+    moveTool.classList.add('active');
+    brushTool.classList.remove('active');
+    eraserTool.classList.remove('active');
+});
+
+brushSize.addEventListener('input', () => {
+    brushSizeValue.textContent = brushSize.value;
+});
+
+brushOpacity.addEventListener('input', () => {
+    brushOpacityValue.textContent = `${Math.round(brushOpacity.value * 100)}%`;
+});
+
+addLayerBtn.addEventListener('click', () => {
+    layers.push({ canvas: createLayerCanvas(), visible: true, opacity: 1, blendingMode: 'normal', transform: { x: 0, y: 0, scale: 1, rotation: 0 } });
+    currentLayer = layers.length - 1;
+    updateLayerPanel();
+});
+
+deleteLayerBtn.addEventListener('click', () => {
+    if (layers.length > 1) {
+        layers.splice(currentLayer, 1);
+        currentLayer = Math.min(currentLayer, layers.length - 1);
+        updateLayerPanel();
+    }
+});
+
+undoBtn.addEventListener('click', () => {
+    if (undoStack.length > 0) {
+        const state = undoStack.pop();
+        redoStack.push({ layer: currentLayer, data: layers[currentLayer].canvas.canvas });
+        layers[state.layer].canvas.clearRect(0, 0, canvas.width, canvas.height);
+        layers[state.layer].canvas.drawImage(state.data, 0, 0);
+        redrawCanvas();
+    }
+});
+
+redoBtn.addEventListener('click', () => {
+    if (redoStack.length > 0) {
+        const state = redoStack.pop();
+        undoStack.push({ layer: currentLayer, data: layers[currentLayer].canvas.canvas });
+        layers[state.layer].canvas.clearRect(0, 0, canvas.width, canvas.height);
+        layers[state.layer].canvas.drawImage(state.data, 0, 0);
+        redrawCanvas();
+    }
+});
+
+savePngBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'artwork.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+});
+
+saveJpegBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'artwork.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.9);
+    link.click();
+});
+
+imageUpload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const img = new Image();
+        img.onload = () => {
+            const newLayer = createLayerCanvas();
+            newLayer.drawImage(img, 0, 0, canvas.width, canvas.height);
+            layers.push({ canvas: newLayer, visible: true, opacity: 1, blendingMode: 'normal', transform: { x: 0, y: 0, scale: 1, rotation: 0 } });
+            currentLayer = layers.length - 1;
+            updateLayerPanel();
+        };
+        img.src = URL.createObjectURL(file);
+    }
+});
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+});
+
+// Hotkeys
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'b') brushTool.click();
+    if (e.key === 'e') eraserTool.click();
+    if (e.key === 'm') moveTool.click();
+    if (e.ctrlKey && e.key === 'z') undoBtn.click();
+    if (e.ctrlKey && e.key === 'y') redoBtn.click();
+});
+
+// Initialize
+updateLayerPanel();
+    </script>
+</body>
+</html>
