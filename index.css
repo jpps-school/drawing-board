@@ -427,7 +427,6 @@ body.dark-theme .layer-item {
     }
 }
 
-
 /* Footer Styles */
 footer {
     background: var(--dark);
@@ -566,24 +565,134 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.about-section p, .about-section blockquote{
-    margin: 20px;
+
+.about-section .section-title {
+  font-size: 2em;
+  color: #1e293b;
+  border-left: 6px solid #ef4444;
+  padding-left: 14px;
+  margin-bottom: 20px;
 }
 
-.about-section ul{
-    margin: 20px 50px;
+.about-section p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.about-section h1{
-    margin: 0 20px;
+.value-list,
+.steps-list {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
 }
 
-.about-section blockquote {
-   border-left: 4px solid #4361EE;
-   padding-left: 15px;
-   color: #555;
-   font-style: italic;
+.value-list li {
+  background: #55acff34;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-left: 5px solid #55acff;
+  border-radius: 8px;
 }
+
+.steps-list {
+  padding-left: 20px;
+}
+.steps-list li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.btn {
+  background: #ef4444;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #dc2626;
+}
+
+.mentor-section {
+  background: #ff404012;
+  margin: -10px; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #0b0b0b5c;
+}
+.cta-section {
+  text-align: center;
+}
+
+/* Optional: tweak for special sections */
+.resource-section, .note {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: auto;
+  border-bottom: 2px solid #ececec;
+}
+
+.note{
+    text-align: center;
+}
+
+.resource-section .section-title {
+  font-size: 1.9em;
+  border-left: 6px solid #10b981; /* Emerald green for resources */
+  padding-left: 14px;
+  margin-bottom: 18px;
+  color: #1f2937;
+}
+
+.resource-section p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.resource-section ul {
+  list-style: none;
+  padding: 0;
+}
+.resource-section li {
+  background: #f9fafb;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-left: 5px solid #10b981;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #bfbfff3e;
+}
+.file-list a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+}
+.file-list a:hover {
+  color: #065f46;
+}
+.benefit-list li {
+  background: #f0fdf4;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-left: 6px solid #22c55e;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  transition: background 0.3s;
+}
+.benefit-list li:hover {
+  background: #ecfdf5;
+}
+.benefit-list strong {
+  color: #065f46;
+}
+
 
 /* Responsive Contact Page */
 @media (max-width: 768px) {
