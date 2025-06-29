@@ -30,6 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka:wght@500&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json" />
     <style>
         :root {
             --primary: #4361EE;
@@ -53,6 +54,7 @@
             color: var(--dark);
             line-height: 1.6;
         }
+        
 
         /* Header */
         header {
@@ -344,15 +346,147 @@ footer {
     font-size: 0.9rem;
     color: rgba(255,255,255,0.7);
 }
+
+
+    
+.extraCnt{
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 2px solid #ddd;
+}
+.extraCnt h2{
+  font-size: 2em;
+  border-left: 6px solid #2b2d42;
+  padding-left: 14px;
+  color: #2b2d42;
+  margin-bottom: 20px;
+}
+
+.extraCnt p{
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ul li {
+  background: #edf2f4;
+  margin: 8px 0;
+  padding: 10px 16px;
+  border-left: 5px solid #2b2d42;
+  border-radius: 8px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+.card, .mentor {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 0 20px #00000040;
+  transform: scale(1.05);
+}
+
+#mentor {
+  background: #fef9f9;
+  border-left: 6px solid #ef233c;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+#mentor h3 {
+  color: #ef233c;
+  margin-top: 20px;
+}
+#mentor blockquote {
+  background: #fff3cd;
+  border-left: 5px solid #f0ad4e;
+  padding: 12px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+#sketch-of-month .featured-sketch {
+  background: #fffbea;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#sketch-of-month .featured-sketch img {
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+#testimonials blockquote {
+  background: #e2eafc;
+  border-left: 5px solid #3f72af;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+.moreButton{
+  padding: 9px 20px 12px 20px;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+}
+
+.moreButton:hover{
+    transform: scale(1.1)
+}
+
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2em;
+  }
+  .gallery-grid, .features-grid, .team-grid {
+    grid-template-columns: 1fr;
+  }
+  #sketch-of-month .featured-sketch {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
     </style>
 </head>
 <body>
+  
     <header>
         <div class="container">
             <div style="text-align: center; font-family: 'Fredoka', sans-serif; color: #FF006E; font-size: 35px;">
   🎨 Welcome to JPPS Drawing Board
 </div>
-<div style="text-align: center; font-size: 18px; color: #a1a194; font-family: 'Trebuchet MS', sans-serif;">
+<div style="text-align: center; font-size: 18px !important; color: #a1a194; font-family: 'Trebuchet MS', sans-serif;">
   This space is built to store, share, and celebrate students’ beautiful artwork made during school hours.
 </div>
         </div>
@@ -366,8 +500,93 @@ footer {
             </div>
         </div>
     </section>
+    
+    <section id="about-board" class="extraCnt">
+  <h2>What is the Drawing Board?</h2>
+  <p>At JPPS, we believe that creativity is as important as academics. Our Drawing Board is a digital space to highlight the artistic efforts of our students, from Nursery to Class 10. Each sketch tells a story, reflects imagination, and shows the joyful spirit of learning.</p>
+  <a href="about.html" class="moreButton">More →</a>
+    </section>
+    
+    <section id="why-art" class="extraCnt">
+  <h2>Why Art Matters</h2>
+  <p>Art enhances imagination, builds confidence, and helps children express themselves in ways words can't. At JPPS, we consider art a powerful tool for emotional and intellectual development.</p>
+  <a href="resources.html#benefits" class="moreButton">More →</a>
+    </section>
+    
+    <section id="curriculum" class="extraCnt">
+  <h2>Our Sketching Curriculum</h2>
+  <p>At JPPS, we follow a unique sketching curriculum designed to develop both artistic and writing skills. From basic letter formation to advanced sketching patterns, students learn the art step-by-step with proper guidance and regular practice.</p>
+  <ul>
+    <li>🔤 English alphabet sketching (capital & small letters)</li>
+    <li>🪔 Hindi varnamala sketching (स्वर & व्यंजन)</li>
+    <li>🖋️ Basic calligraphy introduction (from Class 4 onwards)</li>
+    <li>📏 Proper spacing, line alignment, and stroke direction</li>
+    <li>🎯 Weekly practice tasks and monthly sketching tests</li>
+  </ul>
+   </section>
+   
+   <section id="kids-sketching" class="extraCnt"> 
+  <h2>Sketching for Nursery & Primary Classes</h2>
+  <p>For our younger students, sketching starts as fun! We introduce basic lines, curves, and shapes to help them build control and confidence before letters. This prepares them for clean, neat handwriting in future classes.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>✏️ Line & Shape Practice</h3>
+      <p>Helps build pencil grip, direction sense, and hand movement.</p>
+    </div>
+    <div class="card">
+      <h3>🔡 Basic English Sketching</h3>
+      <p>Capital and small letters with proper guidelines and dot lines.</p>
+    </div>
+    <div class="card">
+      <h3>🧁 Fun Sketch Tracing</h3>
+      <p>Includes tracing activities, pattern lines, and colorful letter outlines.</p>
+    </div>
+  </div>
+    </section>
+    
+    <section id="learning-lines" class="extraCnt">
+  <h2>Learning Through Lines</h2>
+  <p>At JPPS, every line a child draws is a step toward mastery. Our sketching system is built to teach structure, discipline, and beauty — all through the simple art of forming letters. From dotted outlines to confident strokes, we train students to think, trace, and write with precision.</p>
+    </section>
+    
+    <section id="tracing-mastery" class="extraCnt">
+  <h2>From Tracing to Mastery</h2>
+  <p>We don’t just teach students to draw — we help them grow. Starting with guided tracing sheets, students slowly build up to free-hand sketching. Over time, they gain confidence and control, turning rough lines into beautiful scripts. It’s not just handwriting — it’s art with purpose.</p>
+    </section>
+    
+    <section id="mentor" class="extraCnt">
+  <h2>Meet Our Mentor – Mr. Zafar Sanu</h2>
+  <p>At JPPS Teaching Curriculum, we are proud to have <strong>Mr. Zafar Sanu</strong> as the heart of our sketching and creative education. With a unique combination of talent, discipline, and passion, he leads our sketching program — guiding students from basic strokes to beautifully formed English and Hindi letters.</p>
 
-    <section class="gallery-section">
+  <h3>✏️ Master of Sketching</h3>
+  <p>Mr. Sanu brings years of hands-on experience in sketching education. Under his mentorship, students learn not only how to write clearly and beautifully but also how to express creativity within the boundaries of lines and letters. His approach combines technique with personal attention, making even the most difficult strokes easy to learn.</p>
+  <ul>
+    <li>✅ Expert in English & Hindi letter sketching</li>
+    <li>✅ Develops custom guides and tracing sheets for all levels</li>
+    <li>✅ Known for his patience, precision, and passion</li>
+    <li>✅ Encourages students to take pride in neatness and form</li>
+  </ul>
+
+  <h3>🎵 A Gifted Musician</h3>
+  <p>Besides being a sketching expert, Mr. Zafar Sanu is also a gifted singer with a melodious voice. His love for music brings positive energy to the classroom, and he often sings for students during school functions and sketching breaks. His musical presence creates a joyful learning environment and inspires many students to explore music along with their studies.</p>
+
+  <blockquote>
+    <em>“A line must speak, a letter must sing.” – Zafar Sanu</em>
+  </blockquote>
+
+  <h3>🌟 Why Students Love Him</h3>
+  <p>Students admire Mr. Sanu not just for his skills, but for his caring attitude, encouragement, and ability to make every child feel capable. Whether it’s helping a child trace their first letter or singing a motivational tune, he always brings heart into every lesson.</p>
+
+  <p>📌 <strong>Want to see the magic of his work?</strong> Browse the JPPS student sketch gallery or simply go to the gallery section of this website to see the results of his incredible guidance!</p>
+    </section>
+   
+   <section id="gallery" class="extraCnt">
+         <h2>Student Art Gallery</h2>
+         <p>Explore the imagination of our students — from colorful landscapes to creative characters. These artworks reflect not just skill, but the joy of expression.</p>
+         <a href="gallery.html" class="moreButton">More →</a>
+    </section>
+
+    <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-title">
                 <h2>Featured Student Artwork</h2>
@@ -415,6 +634,40 @@ footer {
             </div>
         </div>
     </section>
+    
+    <section id="sketch-of-month" class="extraCnt">
+  <h2>Sketch of the Month</h2>
+  <p>Every month, our mentor Mr. Zafar Sanu selects one outstanding sketch from student portfolios to be featured on the home page. This not only motivates students but gives them a sense of pride and accomplishment.</p>
+  <div class="featured-sketch">
+    <img src="sketches/may-winner.jpg" alt="May Sketch of the Month">
+    <p><strong>Name:</strong> Arohi Sharma, Class 6<br>
+    <strong>Category:</strong> Hindi Letter Sketching<br>
+    <strong>Remarks:</strong> "Perfect alignment and graceful stroke flow" – Zafar Sanu</p>
+  </div>
+    </section>
+    
+    <section id="why-core" class="extraCnt">
+  <h2>Why Sketching is Our Core Subject</h2>
+  <p>At JPPS, sketching is not a side activity — it’s a **core skill**. We treat it as seriously as any academic subject. Why?</p>
+  <ul>
+    <li>✍️ It builds hand control and focus</li>
+    <li>🔠 It improves letter recognition and neat writing</li>
+    <li>🧠 It strengthens brain-hand coordination</li>
+    <li>🎨 It encourages discipline, patience, and self-expression</li>
+  </ul>
+    </section>
+    
+    <section id="testimonials" class="extraCnt">
+  <h2>What Parents Say</h2>
+  <blockquote>
+    “My daughter’s handwriting and confidence both improved after joining JPPS. The sketching sessions make learning fun!”  
+    <br><strong>– Mrs. Shalini Gupta</strong>
+  </blockquote>
+  <blockquote>
+    “Earlier my son struggled with holding a pencil. After one term at JPPS, he now enjoys sketching every day!”  
+    <br><strong>– Mr. Rajeev Prasad</strong>
+  </blockquote>
+    </section>
 
     <section class="interactive-section">
         <div class="container">
@@ -440,6 +693,27 @@ footer {
                 </div>
             </div>
         </div>
+    </section>
+    
+    <section id="about-school" class="extraCnt">
+  <h2>About JPPS</h2>
+  <p>JPPS Teaching Curriculum is dedicated to nurturing young minds with a balanced focus on academics, creativity, discipline, and personal growth. We provide education from Nursery to Class 10 with a curriculum designed to encourage curiosity, learning, and expression.</p>
+  <ul>
+    <li>📘 Focus on academic excellence</li>
+    <li>🎨 Emphasis on creative expression</li>
+    <li>🧑‍🏫 Experienced and caring faculty</li>
+    <li>🏫 A safe and joyful learning environment</li>
+    <li>🧪 Labs, library, and extracurricular activities</li>
+  </ul>
+   </section>
+    
+    <section id="contact" class="extraCnt">
+  <h2>Get in Touch</h2>
+  <p>Have questions about admissions, curriculum, or school activities? Reach out to us!</p>
+  <p>📍 JPPS Teaching Curriculum, Banka, Bihar (813224)</p>
+  <p>📞 +91-8084968563</p>
+  <p>📧 jppsbanka@gmail.com</p>
+  <a href="contact.html" class="moreButton">More →</a>
     </section>
 
    <footer>
@@ -564,6 +838,14 @@ footer {
         link.click();
       });
     });
+    </script>
+    
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
     </script>
 </body>
 </html>
