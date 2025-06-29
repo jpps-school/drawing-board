@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/</loc>
-  </url>
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/gallery.html</loc>
-  </url>
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/create.html</loc>
-  </url>
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/about.html</loc>
-  </url>
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/contact.html</loc>
-  </url>
-  <url>
-    <loc>https://jpps-school.github.io/drawing-board/resources.html</loc>
-  </url>
+  <url><loc>https://jpps-school.github.io/drawing-board/</loc></url>
+  <url><loc>https://jpps-school.github.io/drawing-board/gallery.html</loc></url>
+  <url><loc>https://jpps-school.github.io/drawing-board/create.html</loc></url>
+  <url><loc>https://jpps-school.github.io/drawing-board/about.html</loc></url>
+  <url><loc>https://jpps-school.github.io/drawing-board/contact.html</loc></url>
+  <url><loc>https://jpps-school.github.io/drawing-board/resources.html</loc></url>
 </urlset>
