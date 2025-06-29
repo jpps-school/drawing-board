@@ -7,14 +7,14 @@
   "theme_color": "#4a90e2",
   "icons": [
     {
-      "src": "images/jpps_logo.webp",
+      "src": "images/jpps_logo.jpg",
       "sizes": "192x192",
-      "type": "image/webp"
+      "type": "image/jpg"
     },
     {
-      "src": "images/jpps_logo.webp",
+      "src": "images/jpps_logo.jpg",
       "sizes": "512x512",
-      "type": "image/webp"
+      "type": "image/jpg"
     }
   ]
 }
