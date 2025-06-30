@@ -477,6 +477,60 @@ ul li {
   }
 }
 
+    #install-box{
+             width: 320px;
+             height: 70px;
+             border-radius: 8px;
+             box-sizing: border-box;
+             padding: 8px;
+             display: flex;
+             flex-flow: row nowrap;
+             gap: 5px;
+             justify-content: space-between;
+             align-items: center;
+             box-shadow: 0 0 30px #01010123;
+             position: fixed;
+             left: 50%;
+             transform: translate(-50%, -90px);
+             top: 20px;
+             transition: transform 0.5s;
+         }
+         #app-info{
+             display: flex;
+             flex-flow: row wrap;
+             justify-content: center;
+             box-shadow: 0 0 10px #00000025;
+             padding: 3px 8px;
+             border-radius: 4px;
+             background: #343434
+         }
+         #app-info img{
+             width: 30px;
+             aspect-ratio: 1/1;
+             border-radius: 10px;
+             
+         }
+         #app-name{
+             font-size: 10px;
+             color: #d2d2d2;
+             text-align: center;
+         }
+         #install-box p{
+             font-size: 15px;
+             color: #5e5e5e;
+             text-align: center;
+         }
+         #install-btn{
+             min-width: 60px;
+             height: 30px;
+             font-size: 18px;
+             background: #2b96ff;
+             color: white;
+             display: grid;
+             place-items: center;
+             border-radius: 15px;
+         }
+
     </style>
 </head>
 <body>
@@ -735,6 +789,14 @@ ul li {
         </div>
     </footer>
 
+    <div id="install-box">
+       <div id="app-info">
+           <img src="images/jpps_logo.jpg">
+           <div id="app-name">Drawing Board</div>
+       </div>
+       <p>Get faster access to sketching tools and updates - right from your home screen!</p>
+       <div id="install-btn">Install</div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
       const canvas = document.getElementById('drawingCanvas');
@@ -846,20 +908,37 @@ ul li {
       .register('/sw.js')
   }
 
-  let deferredPrompt;
+  let box = document.getElementById("install-box");
+let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-
-  // Wait for the user's first interaction
-  window.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt = null;
-    }
-  }, { once: true });
+  setTimeout(()=>{
+      box.style.display = 'flex';
+      requestAnimationFrame(()=>{
+          box.style.transform ="translate(-50%, 0px)";
+      });
+  },500);
+  setTimeout(()=>{
+      box.style.transform ="translate(-50%, -90px)";
+      setTimeout(()=>{
+          box.style.display="none";
+      },500);
+  },3500);
 });
+
+document.getElementById('install-btn').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();   
+    deferredPrompt = null;
+    box.style.transform ="translate(-50%, -90px)";
+    setTimeout(()=>{
+       box.style.display="none";
+    },500);
+  }
+});
+
   </script>
 </body>
 </html>
