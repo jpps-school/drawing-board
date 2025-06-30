@@ -1,7 +1,7 @@
+const cacheName = "jpps-app-v1.0.3"
 self.addEventListener('install', (e) => {
-  console.log('Service Worker Installed');
   e.waitUntil(
-    caches.open('v1').then((cache) => {
+    caches.open(cacheName).then((cache) => {
       return cache.addAll([
         '/',
         '/index.html',
