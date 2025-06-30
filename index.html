@@ -852,10 +852,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
 
-  // Show after 2 seconds or right after event
-  setTimeout(() => {
-    deferredPrompt.prompt();
-  }, 2000);
+  // Wait for the user's first interaction
+  window.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+    }
+  }, { once: true });
 });
   </script>
 </body>
