@@ -488,12 +488,13 @@ ul li {
              gap: 5px;
              justify-content: space-between;
              align-items: center;
-             box-shadow: 0 0 30px #01010123;
+             box-shadow: 0 0 30px #3c3c3c;
              position: fixed;
              left: 50%;
              transform: translate(-50%, -90px);
              top: 20px;
              transition: transform 0.5s;
+             background: white;
          }
          #app-info{
              display: flex;
@@ -511,25 +512,26 @@ ul li {
              
          }
          #app-name{
-             font-size: 10px;
+             font-size: 7px;
              color: #d2d2d2;
              text-align: center;
          }
          #install-box p{
-             font-size: 15px;
+             font-size: 12px;
              color: #5e5e5e;
              text-align: center;
          }
          #install-btn{
              min-width: 60px;
              height: 30px;
-             font-size: 18px;
+             font-size: 14px;
              background: #2b96ff;
              color: white;
              display: grid;
              place-items: center;
-             border-radius: 15px;
+             border-radius: 15px;            
          }
+
 
     </style>
 </head>
@@ -926,7 +928,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
           box.style.display="none";
       },500);
   },3500);
-});
+},{once:true});
 
 document.getElementById('install-btn').addEventListener('click', async () => {
   if (deferredPrompt) {
